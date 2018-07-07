@@ -8,11 +8,11 @@ const API_Key = '1e900e378611500f4cb61cad3659ff45';
 
 class WeatherApp extends Component {
 
-  getForecast = async (event) => {
-    event.preventDefault();
-    //const city = event.target.elements.city.value;
-    //const country = event.target.elements.country.value;
-    const apicaller = await fetch(`https://samples.openweathermap.org/data/2.5/weather?q=lodz,pl&appid=${API_Key}`);
+  getForecast = async (e) => {
+    e.preventDefault();
+    const city = e.target.elements.cityinput.value;
+    const country = e.target.elements.countryinput.value;
+    const apicaller = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`);
     const forecast_data = await apicaller.json();
 
     console.log(forecast_data);
