@@ -4,7 +4,7 @@ class Forecast extends Component {
   render () {
     return (
       <div>
-        <h3>Forecast for:</h3>
+        <h3>Forecast for {this.props.city}, {this.props.country}:</h3>
       </div>
     );
   }

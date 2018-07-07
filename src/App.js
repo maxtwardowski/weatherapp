@@ -8,13 +8,25 @@ const API_Key = '1e900e378611500f4cb61cad3659ff45';
 
 class WeatherApp extends Component {
 
-  getForecast = async (e) => {
-    e.preventDefault();
-    const city = e.target.elements.cityinput.value;
-    const country = e.target.elements.countryinput.value;
+  state = {
+    city: undefined,
+    country: undefined,
+    temperature: undefined,
+    description: undefined,
+    windspeed: undefined,
+    pressure: undefined,
+  }
+
+  getForecast = async (event) => {
+    event.preventDefault();
+    const city = event.target.elements.cityinput.value;
+    const country = event.target.elements.countryinput.value;
     const apicaller = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`);
     const forecast_data = await apicaller.json();
-
+    this.setState({
+      city: forecast_data.name,
+      country: forecast_data.sys.country,
+    });
     console.log(forecast_data);
   }
 
@@ -23,7 +35,10 @@ class WeatherApp extends Component {
       <div>
         <Header />
         <Interface getForecast={this.getForecast} />
-        <Forecast />
+        <Forecast 
+          city={this.state.city}
+          country={this.state.country}
+        />
         <Footer />
       </div>
     );
