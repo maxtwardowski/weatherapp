@@ -26,6 +26,10 @@ class WeatherApp extends Component {
     this.setState({
       city: forecast_data.name,
       country: forecast_data.sys.country,
+      temperature: forecast_data.main.temp,
+      description: forecast_data.weather[0].description,
+      windspeed: forecast_data.wind.speed,
+      pressure: forecast_data.main.pressure
     });
     console.log(forecast_data);
   }
@@ -38,6 +42,10 @@ class WeatherApp extends Component {
         <Forecast 
           city={this.state.city}
           country={this.state.country}
+          temperature={this.state.temperature}
+          description={this.state.description}
+          windspeed={this.state.windspeed}
+          pressure={this.state.pressure}
         />
         <Footer />
       </div>
