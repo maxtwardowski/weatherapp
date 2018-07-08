@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Interface extends Component {
-  render() {
-    return (
-      <form onSubmit={this.props.getForecast}>
-        <p><input type="text" name="cityinput" placeholder="City"/></p>
-        <p><input type="text" name="countryinput" placeholder="Country"/></p>
-        <button>Get forecast!</button>
-      </form>
-    );
-  }
-}
+const Interface = props => (
+  <form onSubmit={props.getForecast}>
+    <p><input type="text" name="cityinput" placeholder="City"/></p>
+    <p><input type="text" name="countryinput" placeholder="Country"/></p>
+    <button>Get forecast!</button>
+  </form>
+)
 
 export default Interface;
