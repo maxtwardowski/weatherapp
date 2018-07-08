@@ -4,7 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        <p>Weather App by created by Max using ReactJS framework</p>
+        <p>App created using ReactJS framework</p>
       </div>
     );
   }
