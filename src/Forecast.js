@@ -17,19 +17,30 @@ var firstLetterToUpper = (string) => (
 
 class Forecast extends Component {
   render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <Navigation />
-          <Switch>
-            <Route path="/" component={Page1} exact />
-            <Route path="/page2" component={Page2} />
-            <Route path="/page3" component={Page3} />
-            <Route component={ErrorPage} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    )
+    if (this.props.city) {
+      return (
+        <BrowserRouter>
+          <div>
+            <h3>Forecast for {this.props.city}, {this.props.country}:</h3>
+            <Navigation />
+            <Switch>
+              <Route path="/" 
+                render={ () => <Page1 temperature={this.props.temperature} />} 
+                exact />
+              <Route path="/page2" 
+                render={ () => <Page2 windspeed={this.props.windspeed} />} 
+                />
+              <Route path="/page3" render={ () => <Page3 pressure={this.props.windspeed} />} />
+              <Route component={ErrorPage} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 }
 
