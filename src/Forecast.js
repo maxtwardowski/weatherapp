@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import Page1 from "./ForecastPages/Page1";
+import Page2 from "./ForecastPages/Page2";
+import Page3 from "./ForecastPages/Page3";
+import ErrorPage from "./ForecastPages/ErrorPage";
+
+import Navigation from "./Navigation";
 
 const celsiusconverter = 273.15;
 const tempprecision = 3;
@@ -9,7 +17,26 @@ var firstLetterToUpper = (string) => (
 
 class Forecast extends Component {
   render() {
-    if (this.props.city) {
+    return (
+      <BrowserRouter>
+        <div>
+          <Navigation />
+          <Switch>
+            <Route path="/" component={Page1} exact />
+            <Route path="/page2" component={Page2} />
+            <Route path="/page3" component={Page3} />
+            <Route component={ErrorPage} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    )
+  }
+}
+
+export default Forecast;
+
+/*
+if (this.props.city) {
       return (
         <div>
           <h3>Forecast for {this.props.city}, {this.props.country}:</h3>
@@ -26,7 +53,4 @@ class Forecast extends Component {
         <div></div>
       )
     }
-  }
-}
-
-export default Forecast;
+*/
