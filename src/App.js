@@ -19,12 +19,13 @@ class WeatherApp extends Component {
     pressure: undefined,
   }
 
-  getForecast = (event) => {
+  getCurrentWeather = (event) => {
     event.preventDefault();
     const city = event.target.elements.cityinput.value;
     const country = event.target.elements.countryinput.value;
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`)
-    .then((results) => {
+    const API_Caller = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`;
+    axios.get(API_Caller).then((results) => {
+      console.log(results);
       this.setState({
         city: results.data.name,
         country: results.data.sys.country,
@@ -40,7 +41,7 @@ class WeatherApp extends Component {
     return (
       <div>
         <Header />
-        <Interface getForecast={this.getForecast} />
+        <Interface getCurrentWeather={this.getCurrentWeather} />
         <Weather 
           city={this.state.city}
           country={this.state.country}
