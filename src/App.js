@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Interface from './Interface';
-import Forecast from './Forecast';
+import Weather from './Weather';
+
+import axios from 'axios';
 
 const API_Key = '1e900e378611500f4cb61cad3659ff45';
 
@@ -17,21 +19,21 @@ class WeatherApp extends Component {
     pressure: undefined,
   }
 
-  getForecast = async (event) => {
+  getForecast = (event) => {
     event.preventDefault();
     const city = event.target.elements.cityinput.value;
     const country = event.target.elements.countryinput.value;
-    const apicaller = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`);
-    const forecast_data = await apicaller.json();
-    this.setState({
-      city: forecast_data.name,
-      country: forecast_data.sys.country,
-      temperature: forecast_data.main.temp,
-      description: forecast_data.weather[0].description,
-      windspeed: forecast_data.wind.speed,
-      pressure: forecast_data.main.pressure
-    });
-    console.log(forecast_data);
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`)
+    .then((results) => {
+      this.setState({
+        city: results.data.name,
+        country: results.data.sys.country,
+        temperature: results.data.main.temp,
+        description: results.data.weather[0].description,
+        windspeed: results.data.wind.speed,
+        pressure: results.data.main.pressure
+      })
+    })
   }
 
   render() {
@@ -39,7 +41,7 @@ class WeatherApp extends Component {
       <div>
         <Header />
         <Interface getForecast={this.getForecast} />
-        <Forecast 
+        <Weather 
           city={this.state.city}
           country={this.state.country}
           temperature={this.state.temperature}

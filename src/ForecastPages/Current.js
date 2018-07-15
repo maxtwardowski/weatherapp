@@ -1,7 +1,7 @@
 import React from "react";
 
-const Page1 = (props) => (
+const Current = (props) => (
   <p>Temperature: {props.temperature}</p>
 )
 
-export default Page1;
+export default Current;
