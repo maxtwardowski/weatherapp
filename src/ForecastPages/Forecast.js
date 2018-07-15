@@ -1,7 +1,7 @@
 import React from "react";
 
-const Page2 = (props) => (
+const Forecast = (props) => (
   <p>Windspeed: {props.windspeed}</p>
 )
 
-export default Page2;
+export default Forecast;

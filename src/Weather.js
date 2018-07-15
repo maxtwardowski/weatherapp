@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Page1 from "./ForecastPages/Page1";
-import Page2 from "./ForecastPages/Page2";
+import Current from "./ForecastPages/Current";
+import Forecast from "./ForecastPages/Forecast";
 import Page3 from "./ForecastPages/Page3";
 import ErrorPage from "./ForecastPages/ErrorPage";
 
 import Navigation from "./Navigation";
 
-const celsiusconverter = 273.15;
+/*const celsiusconverter = 273.15;
 const tempprecision = 3;
 
 var firstLetterToUpper = (string) => (
   string.charAt(0).toUpperCase() + string.slice(1)
-)
+)*/
 
-class Forecast extends Component {
+class Weather extends Component {
   render() {
     if (this.props.city) {
       return (
         <BrowserRouter>
           <div>
-            <h3>Forecast for {this.props.city}, {this.props.country}:</h3>
+            <h3>Weather for {this.props.city}, {this.props.country}:</h3>
             <Navigation />
             <Switch>
               <Route path="/" 
-                render={ () => <Page1 temperature={this.props.temperature} />} 
+                render={ () => <Current temperature={this.props.temperature} />} 
                 exact />
-              <Route path="/page2" 
-                render={ () => <Page2 windspeed={this.props.windspeed} />} 
+              <Route path="/forecast" 
+                render={ () => <Forecast windspeed={this.props.windspeed} />} 
                 />
               <Route path="/page3" render={ () => <Page3 pressure={this.props.windspeed} />} />
               <Route component={ErrorPage} />
@@ -44,7 +44,7 @@ class Forecast extends Component {
   }
 }
 
-export default Forecast;
+export default Weather;
 
 /*
 if (this.props.city) {

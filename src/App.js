@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Interface from './Interface';
-import Forecast from './Forecast';
+import Weather from './Weather';
 
 import axios from 'axios';
 
@@ -41,7 +41,7 @@ class WeatherApp extends Component {
       <div>
         <Header />
         <Interface getForecast={this.getForecast} />
-        <Forecast 
+        <Weather 
           city={this.state.city}
           country={this.state.country}
           temperature={this.state.temperature}
