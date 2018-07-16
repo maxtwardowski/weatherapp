@@ -35,7 +35,12 @@ class Weather extends Component {
                   />
                 } 
                 />
-              <Route path="/location" render={ () => <Location pressure={this.props.pressure} />} />
+              <Route path="/location" 
+                render={ () => <Location 
+                    coordinates={this.props.coordinates}
+                  />
+                } 
+                />
               <Route component={ErrorPage} />
             </Switch>
           </div>
