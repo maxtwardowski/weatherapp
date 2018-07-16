@@ -17,20 +17,23 @@ class WeatherApp extends Component {
       temperature: undefined,
       description: undefined,
       windspeed: undefined,
-      pressure: undefined
+      pressure: undefined,
     }, 
     tomorrow: {
       temperatures: [],
       descriptions: [],
+    },
+    coordinates: {
+      lat: undefined,
+      lng: undefined,
     }
   }
 
   getData = event => {
     event.preventDefault();
     const city = event.target.elements.cityinput.value;
-    const country = event.target.elements.countryinput.value;
-    const API_Caller_current = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`;
-    const API_Caller_tomorrow = `http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_Key}`;
+    const API_Caller_current = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_Key}`;
+    const API_Caller_tomorrow = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_Key}`;
 
     axios.all([
       axios.get(API_Caller_current),
@@ -80,6 +83,10 @@ class WeatherApp extends Component {
         tomorrow: {
           temperatures: getTemperatures(),
           descriptions: getDescriptions(),
+        },
+        coordinates: {
+          lat: results_current.data.coord.lat,
+          lng: results_current.data.coord.lon,
         }
       })
 
@@ -100,6 +107,7 @@ class WeatherApp extends Component {
           pressure={this.state.live.pressure}
           tomorrow_temperatures={this.state.tomorrow.temperatures}
           tomorrow_descriptions={this.state.tomorrow.descriptions}
+          coordinates={this.state.coordinates}
         />
         <Footer />
       </div>

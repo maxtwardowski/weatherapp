@@ -2,8 +2,7 @@ import React from 'react';
 
 const Interface = props => (
   <form onSubmit={props.getData}>
-    <p><input type="text" name="cityinput" placeholder="City"/></p>
-    <p><input type="text" name="countryinput" placeholder="Country"/></p>
+    <input type="text" name="cityinput" placeholder="City"/>
     <button>Get forecast!</button>
   </form>
 )

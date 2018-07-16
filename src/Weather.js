@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Live from "./ForecastPages/Live";
 import Tomorrow from "./ForecastPages/Tomorrow";
-import Page3 from "./ForecastPages/Page3";
+import Location from "./ForecastPages/Location";
 import ErrorPage from "./ForecastPages/ErrorPage";
 
 import Navigation from "./Navigation";
@@ -35,7 +35,12 @@ class Weather extends Component {
                   />
                 } 
                 />
-              <Route path="/page3" render={ () => <Page3 pressure={this.props.pressure} />} />
+              <Route path="/location" 
+                render={ () => <Location 
+                    coordinates={this.props.coordinates}
+                  />
+                } 
+                />
               <Route component={ErrorPage} />
             </Switch>
           </div>
