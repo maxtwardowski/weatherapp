@@ -13,10 +13,17 @@ class WeatherApp extends Component {
   state = {
     city: undefined,
     country: undefined,
-    temperature: undefined,
-    description: undefined,
-    windspeed: undefined,
-    pressure: undefined,
+    current: {
+      time: undefined,
+      temperature: undefined,
+      description: undefined,
+      windspeed: undefined,
+      pressure: undefined,
+    }, 
+    tomorrow: {
+      temperatures: [],
+      descriptions: [],
+    }
   }
 
   getCurrentWeather = (event) => {
@@ -25,14 +32,15 @@ class WeatherApp extends Component {
     const country = event.target.elements.countryinput.value;
     const API_Caller = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`;
     axios.get(API_Caller).then((results) => {
-      console.log(results);
       this.setState({
         city: results.data.name,
         country: results.data.sys.country,
-        temperature: results.data.main.temp,
-        description: results.data.weather[0].description,
-        windspeed: results.data.wind.speed,
-        pressure: results.data.main.pressure
+        current: {
+          temperature: results.data.main.temp,
+          description: results.data.weather[0].description,
+          windspeed: results.data.wind.speed,
+          pressure: results.data.main.pressure
+        }
       })
     })
   }
@@ -45,10 +53,10 @@ class WeatherApp extends Component {
         <Weather 
           city={this.state.city}
           country={this.state.country}
-          temperature={this.state.temperature}
-          description={this.state.description}
-          windspeed={this.state.windspeed}
-          pressure={this.state.pressure}
+          temperature={this.state.current.temperature}
+          description={this.state.current.description}
+          windspeed={this.state.current.windspeed}
+          pressure={this.state.current.pressure}
         />
         <Footer />
       </div>
