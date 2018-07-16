@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Current from "./ForecastPages/Current";
-import Forecast from "./ForecastPages/Forecast";
+import Live from "./ForecastPages/Live";
+import Tomorrow from "./ForecastPages/Tomorrow";
 import Page3 from "./ForecastPages/Page3";
 import ErrorPage from "./ForecastPages/ErrorPage";
 
@@ -18,7 +18,7 @@ class Weather extends Component {
             <Navigation />
             <Switch>
               <Route path="/" 
-                render={ () => <Current
+                render={ () => <Live
                     city={this.props.city}
                     country={this.props.country}
                     temperature={this.props.temperature} 
@@ -28,8 +28,12 @@ class Weather extends Component {
                   />
                 } 
                 exact />
-              <Route path="/forecast" 
-                render={ () => <Forecast windspeed={this.props.windspeed} />} 
+              <Route path="/tomorrow" 
+                render={ () => <Tomorrow 
+                    temperatures={this.props.tomorrow_temperatures}
+                    descriptions={this.props.tomorrow_descriptions}
+                  />
+                } 
                 />
               <Route path="/page3" render={ () => <Page3 pressure={this.props.pressure} />} />
               <Route component={ErrorPage} />
