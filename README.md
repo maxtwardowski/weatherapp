@@ -1,3 +1,10 @@
+## Weather App
+
+This app was created as an exercise project while learning React framework.<br>
+It utilizes http://openweathermap.org API and Axios library to obtain the data.
+
+_The contents below were generated automatically by create-react-app_
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
