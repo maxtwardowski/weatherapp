@@ -32,9 +32,8 @@ class WeatherApp extends Component {
   getData = event => {
     event.preventDefault();
     const city = event.target.elements.cityinput.value;
-    const country = event.target.elements.countryinput.value;
-    const API_Caller_current = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`;
-    const API_Caller_tomorrow = `http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_Key}`;
+    const API_Caller_current = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_Key}`;
+    const API_Caller_tomorrow = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_Key}`;
 
     axios.all([
       axios.get(API_Caller_current),
