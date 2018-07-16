@@ -1,8 +1,8 @@
 ## Weather App
 
-This app was created as an exercise project while learning React framework.
+**This app was created as an exercise project while learning React framework.
 It utilizes http://openweathermap.org API and Axios (https://github.com/axios/axios) library to obtain the data.
-Also, google-map-react package (https://github.com/google-map-react/google-map-react) is used for location visualisation.
+Also, google-map-react package (https://github.com/google-map-react/google-map-react) is used for location visualisation.**
 
 _The contents below were generated automatically by create-react-app_
 
